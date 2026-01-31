@@ -6,8 +6,8 @@ POST {{baseUrl}}/users HTTP/1.1
 content-type: application/json
 
 {
-  "email": "user2@gg.com",
-  "username": "user2",
+  "email": "user4@gg.com",
+  "username": "user4",
   "password": "123",
   "age": 25,
   "address": "HN"
@@ -31,7 +31,7 @@ content-type: application/json
     "address": "HCM"
 }
 ### DELETE user by ID
-DELETE {{baseUrl}}/users/1
+DELETE {{baseUrl}}/users/2
 
 ### GET own profile (protected route)
 GET {{baseUrl}}/users/me HTTP/1.1
