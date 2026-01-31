@@ -10,9 +10,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class UserUpdateDto {
-    @NotBlank(message = "Username is mandatory")
-    private String username;
-    private Integer age;
-    private String address;
+public class PasswordUserDto {
+    @NotBlank
+    private String password;
+
 }

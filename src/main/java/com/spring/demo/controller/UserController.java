@@ -1,7 +1,11 @@
 package com.spring.demo.controller;
 
-import com.spring.demo.entity.User;
+import com.spring.demo.dto.PasswordUserDto;
+import com.spring.demo.dto.UserCreateDto;
+import com.spring.demo.dto.UserResponseDto;
+import com.spring.demo.dto.UserUpdateDto;
 import com.spring.demo.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,29 +18,29 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public User create(@RequestBody User user) {
-        return userService.create(user);
+    public UserResponseDto create(@RequestBody @Valid UserCreateDto dto) {
+        return userService.create(dto);
     }
 
     @GetMapping
-    public List<User> getAlls() {
+    public List<UserResponseDto> getAlls() {
         return userService.getAlls();
     }
 
     @GetMapping("/{id}")
-    public User getById(@PathVariable Long id) {
+    public UserResponseDto getById(@PathVariable Long id) {
         return userService.getById(id);
     }
 
     @GetMapping("/me")
-    public User getMe() {
+    public UserResponseDto getMe() {
         // For demonstration, returning a static user. In real scenarios, fetch from security context.
         return userService.getById(1L);
     }
 
     @PutMapping("/{id}")
-    public User update(@PathVariable Long id, @RequestBody User user) {
-        return userService.update(id, user);
+    public UserResponseDto update(@PathVariable Long id, @RequestBody @Valid UserUpdateDto dto) {
+        return userService.update(id, dto);
     }
 
     @DeleteMapping("/{id}")
@@ -45,8 +49,8 @@ public class UserController {
     }
 
     @PatchMapping("/{id}/password" )
-    public User setNewPassword(@PathVariable Long id, @RequestBody User user) {
-        return userService.setNewPassword(id, user);
+    public UserResponseDto setNewPassword(@PathVariable Long id, @RequestBody @Valid PasswordUserDto dto) {
+        return userService.setNewPassword(id, dto);
     }
 
 

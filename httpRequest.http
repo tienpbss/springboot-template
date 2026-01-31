@@ -6,8 +6,8 @@ POST {{baseUrl}}/users HTTP/1.1
 content-type: application/json
 
 {
-  "email": "user1@gg.com",
-  "username": "user1",
+  "email": "user2@gg.com",
+  "username": "user2",
   "password": "123",
   "age": 25,
   "address": "HN"

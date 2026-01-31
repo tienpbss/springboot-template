@@ -1,6 +1,5 @@
 package com.spring.demo.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,12 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserCreateDto {
-    @NotBlank(message = "Username is mandatory")
+public class UserResponseDto {
+    private Long id;
     private String username;
-    @NotBlank(message = "Password is mandatory")
-    private String password;
-    @NotBlank(message = "Email is mandatory")
     private String email;
     private Integer age;
     private String address;
