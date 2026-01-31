@@ -1,0 +1,60 @@
+@baseUrl = http://localhost:8080/api
+@token = your_jwt_token_here
+
+### POST a new user
+POST {{baseUrl}}/users HTTP/1.1
+content-type: application/json
+
+{
+  "email": "user1@gg.com",
+  "username": "user1",
+  "password": "123",
+  "age": 25,
+  "address": "HN"
+}
+
+### GET all users
+GET {{baseUrl}}/users
+
+
+### GET user by ID
+GET {{baseUrl}}/users/1
+
+
+### PUT update user by ID
+PUT {{baseUrl}}/users/1 HTTP/1.1
+content-type: application/json
+
+{
+    "username": "user1edited",
+    "age": 26,
+    "address": "HCM"
+}
+### DELETE user by ID
+DELETE {{baseUrl}}/users/1
+
+### GET own profile (protected route)
+GET {{baseUrl}}/users/me HTTP/1.1
+Authorization: Bearer {{token}}
+
+### Change password (protected route)
+PATCH {{baseUrl}}/users/1/password HTTP/1.1
+Authorization: Bearer {{token}}
+content-type: application/json
+
+{
+    "password": "123456"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

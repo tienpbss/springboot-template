@@ -1,0 +1,15 @@
+services:
+  mysql:
+    container_name: 'mysql-login'
+    image: 'mysql:8.0.44'
+    environment:
+      - 'MYSQL_DATABASE=userdb'
+      - 'MYSQL_PASSWORD=123'
+      - 'MYSQL_ROOT_PASSWORD=123'
+      - 'MYSQL_USER=user1'
+    ports:
+      - '3306:3306'
+    volumes:
+        - mysql-login:/var/lib/mysql'
+volumes:
+  mysql-login:
