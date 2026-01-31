@@ -27,10 +27,10 @@ public class ResponseWrapper implements ResponseBodyAdvice<Object> {
                                   ServerHttpRequest request,
                                   ServerHttpResponse response) {
 
-        // Wrap the response
-        if (body instanceof ApiResponse<?>) {
+        if (body instanceof ApiResponse || body instanceof String) {
             return body;
         }
+
         return ApiResponse.success(body);
     }
 }
