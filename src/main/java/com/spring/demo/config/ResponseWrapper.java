@@ -15,7 +15,7 @@ public class ResponseWrapper implements ResponseBodyAdvice<Object> {
     @Override
     public boolean supports(MethodParameter returnType,
                             Class<? extends HttpMessageConverter<?>> converterType) {
-        // Don't wrap if already ApiResponse or is error handling
+        // Don't wrap if already ApiResponse or is errodocr handling
         return !returnType.getParameterType().equals(ApiResponse.class);
     }
 
