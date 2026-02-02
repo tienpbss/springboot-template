@@ -4,3 +4,4 @@ This template include
 - api response wrapper
 - mapstruct mapper
 - handle exception
+- init data when start project
