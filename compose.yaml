@@ -1,6 +1,6 @@
 services:
   mysql:
-    container_name: 'mysql-login'
+    container_name: 'mysql-temp'
     image: 'mysql:8.0.44'
     environment:
       - 'MYSQL_DATABASE=userdb'
@@ -11,5 +11,27 @@ services:
       - '3306:3306'
     volumes:
         - mysql-login:/var/lib/mysql'
+    networks:
+      - app-network
+  backend:
+    container_name: 'springboot-temp'
+    image: 'springboot-temp:tmp'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+        - 'SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/userdb'
+        - 'SPRING_DATASOURCE_USERNAME=root'
+        - 'SPRING_DATASOURCE_PASSWORD=123'
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mysql
+    networks:
+      - app-network
 volumes:
   mysql-login:
+
+networks:
+  app-network:
+    driver: bridge
